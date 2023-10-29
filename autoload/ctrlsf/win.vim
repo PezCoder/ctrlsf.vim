@@ -176,6 +176,9 @@ endf
 " ResizeNeighborWins()
 "
 func! s:ResizeNeighborWins() abort
+    if !&modifiable
+        return
+    endif
     setl winfixwidth
     setl winfixheight
     wincmd =
@@ -192,6 +195,10 @@ endf
 " InitMainWindow()
 func! s:InitMainWindow() abort
     if exists("b:ctrlsf_initialized")
+        return
+    endif
+
+    if !&modifiable
         return
     endif
 
